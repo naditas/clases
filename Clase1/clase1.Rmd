@@ -6,7 +6,7 @@ date:  "`r Sys.Date()`"
 output: 
   xaringan::moon_reader:
     lib_dir: libs  
-    css: ["default" ,"default-fonts" ,"gentle-r.css"]
+    css: xaringan-themer.css
     df_print: default
     nature:
       ratio: 16:9
@@ -17,6 +17,17 @@ output:
 editor_options: 
   chunk_output_type: console
 ---
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+  link_color         = "#1c5253"
+)
+```
+
 
 # ¿Qué es R?
 <br>
@@ -24,11 +35,11 @@ editor_options:
 --
 
 
-- Se conoce como un lenguaje orientado objetos, se pueden utilizar múltiples paquetes mediante sus librerias para trabajarlos. 
+- Se conoce como un lenguaje orientado objetos, se pueden utilizar mÃºltiples paquetes mediante sus librerias para trabajarlos. 
 --
 
 
-- Existe una interfaz básica con la *consola* que permite realizar programación (Rgui).
+- Existe una interfaz bÃ¡sica con la *consola* que permite realizar programación (Rgui).
 --
 
 
@@ -80,12 +91,12 @@ class: center
 |consola | El portal "principal" a R, donde escriben los comandos |
 | script | tu block de notas o archivo de comandos |
 | functions | funciones, bloques de comandos repetibles |
-| working directory | Ubicación de los archivos de entrada/salida |
+| working directory | UbicaciÃ³n de los archivos de entrada/salida |
 | packages |Paquetes para R |
-| vector | La unidad básica de datos en R |
+| vector | La unidad bÃ¡sica de datos en R |
 | dataframe | datos organizados en filas y columnas |
 
-Para más detalles visitar <http://adv-r.had.co.nz/Vocabulary.html>
+Para mÃ¡s detalles visitar <http://adv-r.had.co.nz/Vocabulary.html>
 ]
 
 ---
@@ -162,7 +173,7 @@ horas$dia <- as.factor(horas$dia)
 
 levels(horas$dia)
 
-#install.packages("carData") instalarlo si no está
+#install.packages("carData") instalarlo si no estÃ¡
 library(carData)
 
 str(carData::Chile)
@@ -244,10 +255,10 @@ head(a)
 
 2. Llamar libreria: library("readxl")
 
-3. Utilizar la función: readxl("Directorio del archivo")
+3. Utilizar la funciÃ³n: readxl("Directorio del archivo")
 
 4. Ejemplo: readxl("C:/documentos/base.xlsx")
 
-5. Si se quiere una pestaña especifica se puede señalar con **sheet**
+5. Si se quiere una pestaÃ±a especifica se puede seÃ±alar con **sheet**
 
 

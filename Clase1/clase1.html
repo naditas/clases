@@ -6,9 +6,7 @@
     <meta name="author" content="   " />
     <meta name="date" content="2021-10-05" />
     <script src="libs/header-attrs-2.9/header-attrs.js"></script>
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="gentle-r.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -22,17 +20,19 @@ class: center, middle, inverse, title-slide
 ---
 
 
+
+
 # ¿Qué es R?
 &lt;br&gt;
 - Un lenguaje de programación orientado al análisis estadístico. 
 --
 
 
-- Se conoce como un lenguaje orientado objetos, se pueden utilizar múltiples paquetes mediante sus librerias para trabajarlos. 
+- Se conoce como un lenguaje orientado objetos, se pueden utilizar mÃºltiples paquetes mediante sus librerias para trabajarlos. 
 --
 
 
-- Existe una interfaz básica con la *consola* que permite realizar programación (Rgui).
+- Existe una interfaz bÃ¡sica con la *consola* que permite realizar programación (Rgui).
 --
 
 
@@ -84,12 +84,12 @@ class: center
 |consola | El portal "principal" a R, donde escriben los comandos |
 | script | tu block de notas o archivo de comandos |
 | functions | funciones, bloques de comandos repetibles |
-| working directory | Ubicación de los archivos de entrada/salida |
+| working directory | UbicaciÃ³n de los archivos de entrada/salida |
 | packages |Paquetes para R |
-| vector | La unidad básica de datos en R |
+| vector | La unidad bÃ¡sica de datos en R |
 | dataframe | datos organizados en filas y columnas |
 
-Para más detalles visitar &lt;http://adv-r.had.co.nz/Vocabulary.html&gt;
+Para mÃ¡s detalles visitar &lt;http://adv-r.had.co.nz/Vocabulary.html&gt;
 ]
 
 ---
@@ -182,7 +182,7 @@ levels(horas$dia)
 ```
 
 ```r
-#install.packages("carData") instalarlo si no está
+#install.packages("carData") instalarlo si no estÃ¡
 library(carData)
 
 str(carData::Chile)
@@ -402,11 +402,11 @@ head(a)
 
 2. Llamar libreria: library("readxl")
 
-3. Utilizar la función: readxl("Directorio del archivo")
+3. Utilizar la funciÃ³n: readxl("Directorio del archivo")
 
 4. Ejemplo: readxl("C:/documentos/base.xlsx")
 
-5. Si se quiere una pestaña especifica se puede señalar con **sheet**
+5. Si se quiere una pestaÃ±a especifica se puede seÃ±alar con **sheet**
 
 
     </textarea>
