@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="   " />
+    <meta name="date" content="2021-10-05" />
+    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="gentle-r.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 1
+## Introducción a R
+### <br> <br>
+### 2021-10-05
+
+---
+
+
+# ¿Qué es R?
+&lt;br&gt;
+- Un lenguaje de programación orientado al análisis estadístico. 
+--
+
+
+- Se conoce como un lenguaje orientado objetos, se pueden utilizar múltiples paquetes mediante sus librerias para trabajarlos. 
+--
+
+
+- Existe una interfaz básica con la *consola* que permite realizar programación (Rgui).
+--
+
+
+- **Rstudio** es una interfaz que permite correr la consola de R y realizar funciones. Con un entorno de trabajo más intuitivo. 
+--
+
+
+- Si bien trabajaremos en Rstudio, en general hablaremos de R para referirnos al programa. 
+--
+
+&lt;br&gt;
+.center[![](https://bookdown.org/oscar_teach/estadistica_aplicada_con_r/r-rstudio.png)]
+---
+--
+# Utilidades de R
+&lt;br&gt;
+
+--
+1. Analizar encuestas sociales que frecuentemente podrán requerir demasiados recursos de excel (CASEN, ENE, ESI, CENSO, etc.)
+
+--
+
+2. Es software libre lo que tiene como ventaja que existe una gran cantidad de personas que conforman una comunidad que apoya el desarrollo del codigo para mejorar el programa continuamente. 
+
+--
+3. Es uno de los programas más utilizados en el ámbito cientifico lo cual permite la replicabilidad de las investigaciones.
+
+
+--
+4. Se pueden hacer reportes completos sin necesidad de otros programas o presentaciones como esta. 
+
+---
+
+---
+class: center, middle 
+# Paquetes
+
+![ ](https://pbs.twimg.com/media/D-X2bddXsAAWLE7.jpg)
+
+---
+class: center
+# Vocabulario básico de R
+
+&lt;br&gt;
+&lt;center&gt;
+.font100[
+| Término | Descripción |
+|:-----------------|:-----------------------------------------------:|
+|consola | El portal "principal" a R, donde escriben los comandos |
+| script | tu block de notas o archivo de comandos |
+| functions | funciones, bloques de comandos repetibles |
+| working directory | Ubicación de los archivos de entrada/salida |
+| packages |Paquetes para R |
+| vector | La unidad básica de datos en R |
+| dataframe | datos organizados en filas y columnas |
+
+Para más detalles visitar &lt;http://adv-r.had.co.nz/Vocabulary.html&gt;
+]
+
+---
+# Funciones básicas
+
+- ? = consultar por un paquete o libreria
+
+- str() = conocer la structura de una base o dataframe
+
+- library() = utilizar una libreria determinada
+
+- intall.packages() = instalar una libreria
+
+- getwd() = conocer el directorio de trabajo
+
+- setwd() = configurar un directorio de trabajo
+--
+
+
+```r
+dia &lt;- c("lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo")
+mañana &lt;- c(3,4,5,6,4.5,3,4)
+tarde &lt;- c(5,5.5,4,5,5,6,4)
+
+horas &lt;- data.frame(dia, mañana, tarde)
+str(horas) 
+```
+
+```
+## 'data.frame':	7 obs. of  3 variables:
+##  $ dia   : chr  "lunes" "martes" "miercoles" "jueves" ...
+##  $ mañana: num  3 4 5 6 4.5 3 4
+##  $ tarde : num  5 5.5 4 5 5 6 4
+```
+
+---
+# Operados y asignadores importantes
+
+%in%, match
+
+=, &lt;-, $, [, 
+
+[[, head, tail, subset
+
+with, assign, get
+
+# Comparaciones
+
+all.equal, identical
+
+!=, ==, &gt;, &gt;=, &lt;, &lt;=
+
+is.na, complete.cases
+
+is.finite
+
+---
+
+.pull-right[
+
+# Matemática básica
+
+max, min, prod, sum cummax, cummin, cumprod, cumsum, diff
+
+mean, median, cor, sd, var
+]
+
+--
+.pull-left[
+# Cómo pedir ayuda
+
+- ```help()```: obtener ayuda por consola
+- ```??...```: obtener ayuda por consola
+- Pestaña ```Help``` de Rstudio
+- [Cheat Sheet de RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- Buscar en San Google (stackoverflow, R project...)
+]
+---
+
+```r
+#Conocer los niveles de un factor requiere primero factorizar
+horas$dia &lt;- as.factor(horas$dia) 
+
+levels(horas$dia)
+```
+
+```
+## [1] "domingo"   "jueves"    "lunes"     "martes"    "miercoles" "sabado"   
+## [7] "viernes"
+```
+
+```r
+#install.packages("carData") instalarlo si no está
+library(carData)
+
+str(carData::Chile)
+```
+
+```
+## 'data.frame':	2700 obs. of  8 variables:
+##  $ region    : Factor w/ 5 levels "C","M","N","S",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ population: int  175000 175000 175000 175000 175000 175000 175000 175000 175000 175000 ...
+##  $ sex       : Factor w/ 2 levels "F","M": 2 2 1 1 1 1 2 1 1 2 ...
+##  $ age       : int  65 29 38 49 23 28 26 24 41 41 ...
+##  $ education : Factor w/ 3 levels "P","PS","S": 1 2 1 1 3 1 2 3 1 1 ...
+##  $ income    : int  35000 7500 15000 35000 35000 7500 35000 15000 15000 15000 ...
+##  $ statusquo : num  1.01 -1.3 1.23 -1.03 -1.1 ...
+##  $ vote      : Factor w/ 4 levels "A","N","U","Y": 4 2 4 2 2 2 2 2 3 2 ...
+```
+---
+
+```r
+library(gmodels)
+CrossTable(dia,tarde, prop.chisq=FALSE)
+```
+
+```
+## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |           N / Row Total |
+## |           N / Col Total |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  7 
+## 
+##  
+##              | tarde 
+##          dia |         4 |         5 |       5.5 |         6 | Row Total | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##      domingo |         1 |         0 |         0 |         0 |         1 | 
+##              |     1.000 |     0.000 |     0.000 |     0.000 |     0.143 | 
+##              |     0.500 |     0.000 |     0.000 |     0.000 |           | 
+##              |     0.143 |     0.000 |     0.000 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##       jueves |         0 |         1 |         0 |         0 |         1 | 
+##              |     0.000 |     1.000 |     0.000 |     0.000 |     0.143 | 
+##              |     0.000 |     0.333 |     0.000 |     0.000 |           | 
+##              |     0.000 |     0.143 |     0.000 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##        lunes |         0 |         1 |         0 |         0 |         1 | 
+##              |     0.000 |     1.000 |     0.000 |     0.000 |     0.143 | 
+##              |     0.000 |     0.333 |     0.000 |     0.000 |           | 
+##              |     0.000 |     0.143 |     0.000 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##       martes |         0 |         0 |         1 |         0 |         1 | 
+##              |     0.000 |     0.000 |     1.000 |     0.000 |     0.143 | 
+##              |     0.000 |     0.000 |     1.000 |     0.000 |           | 
+##              |     0.000 |     0.000 |     0.143 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##    miercoles |         1 |         0 |         0 |         0 |         1 | 
+##              |     1.000 |     0.000 |     0.000 |     0.000 |     0.143 | 
+##              |     0.500 |     0.000 |     0.000 |     0.000 |           | 
+##              |     0.143 |     0.000 |     0.000 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##       sabado |         0 |         0 |         0 |         1 |         1 | 
+##              |     0.000 |     0.000 |     0.000 |     1.000 |     0.143 | 
+##              |     0.000 |     0.000 |     0.000 |     1.000 |           | 
+##              |     0.000 |     0.000 |     0.000 |     0.143 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+##      viernes |         0 |         1 |         0 |         0 |         1 | 
+##              |     0.000 |     1.000 |     0.000 |     0.000 |     0.143 | 
+##              |     0.000 |     0.333 |     0.000 |     0.000 |           | 
+##              |     0.000 |     0.143 |     0.000 |     0.000 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+## Column Total |         2 |         3 |         1 |         1 |         7 | 
+##              |     0.286 |     0.429 |     0.143 |     0.143 |           | 
+## -------------|-----------|-----------|-----------|-----------|-----------|
+## 
+## 
+```
+---
+
+```r
+mean(horas$tarde)
+```
+
+```
+## [1] 4.928571
+```
+--
+
+```r
+mean(horas$mañana)
+```
+
+```
+## [1] 4.214286
+```
+--
+
+```r
+max(horas$mañana)
+```
+
+```
+## [1] 6
+```
+--
+
+```r
+max(horas$tarde)
+```
+
+```
+## [1] 6
+```
+--
+
+```r
+min(horas$tarde)
+```
+
+```
+## [1] 4
+```
+
+---
+
+## Objetos en R
+ 
+
+
+```r
+ x &lt;- 1
+ y &lt;- 2
+ z &lt;- x+y
+ 
+ z
+```
+
+```
+## [1] 3
+```
+
+```r
+ a &lt;- seq(1:20)
+ 
+ a
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+```
+---
+ 
+## Operaciones
+
+
+```r
+length(a)
+```
+
+```
+## [1] 20
+```
+
+```r
+summary(a)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    5.75   10.50   10.50   15.25   20.00
+```
+---
+## Tablas
+
+```r
+mean(a)
+```
+
+```
+## [1] 10.5
+```
+
+```r
+median(a)
+```
+
+```
+## [1] 10.5
+```
+
+
+```r
+a &lt;- as.data.frame(a)
+head(a)
+```
+
+```
+##   a
+## 1 1
+## 2 2
+## 3 3
+## 4 4
+## 5 5
+## 6 6
+```
+
+
+---
+# Importar un archivo excel
+
+1. Instalar paquete: readxl: install.packages("readxl")
+
+2. Llamar libreria: library("readxl")
+
+3. Utilizar la función: readxl("Directorio del archivo")
+
+4. Ejemplo: readxl("C:/documentos/base.xlsx")
+
+5. Si se quiere una pestaña especifica se puede señalar con **sheet**
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
