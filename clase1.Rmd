@@ -1,8 +1,8 @@
 ---
 title: "Clase 1"
 subtitle: "Introducción a R"
-author: "<br>Reca<br>"
-date: "04-10-2021"
+author: "<br> <br>"
+date:  "`r Sys.Date()`"
 output: 
   xaringan::moon_reader:
     lib_dir: libs  
