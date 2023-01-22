@@ -91,7 +91,7 @@ class: center
 |consola | El portal "principal" a R, donde escriben los comandos |
 | script | tu block de notas o archivo de comandos |
 | functions | funciones, bloques de comandos repetibles |
-| working directory | UbicaciÃ³n de los archivos de entrada/salida |
+| working directory | Ubicación de los archivos de entrada/salida |
 | packages |Paquetes para R |
 | vector | La unidad bÃ¡sica de datos en R |
 | dataframe | datos organizados en filas y columnas |
@@ -108,7 +108,7 @@ Para mÃ¡s detalles visitar <http://adv-r.had.co.nz/Vocabulary.html>
 
 - library() = utilizar una libreria determinada
 
-- intall.packages() = instalar una libreria
+- intall.packages() = instalar una librería
 
 - getwd() = conocer el directorio de trabajo
 
@@ -255,10 +255,10 @@ head(a)
 
 2. Llamar libreria: library("readxl")
 
-3. Utilizar la funciÃ³n: readxl("Directorio del archivo")
+3. Utilizar la función: readxl("Directorio del archivo")
 
 4. Ejemplo: readxl("C:/documentos/base.xlsx")
 
-5. Si se quiere una pestaÃ±a especifica se puede seÃ±alar con **sheet**
+5. Si se quiere una pestaña especifica se puede señalar con **sheet**
 
 
